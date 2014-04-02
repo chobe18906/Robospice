@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Robospice.iml" filepath="$PROJECT_DIR$/Robospice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/robospice-cache/robospice-cache.iml" filepath="$PROJECT_DIR$/robospice-cache/robospice-cache.iml" />
+      <module fileurl="file://$PROJECT_DIR$/robospice-core/robospice-core.iml" filepath="$PROJECT_DIR$/robospice-core/robospice-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/robospice-google-http-client/robospice-google-http-client.iml" filepath="$PROJECT_DIR$/robospice-google-http-client/robospice-google-http-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/robospice-okhttp/robospice-okhttp.iml" filepath="$PROJECT_DIR$/robospice-okhttp/robospice-okhttp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/robospice-ormlite/robospice-ormlite.iml" filepath="$PROJECT_DIR$/robospice-ormlite/robospice-ormlite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/robospice-ormlite-content-provider/robospice-ormlite-content-provider.iml" filepath="$PROJECT_DIR$/robospice-ormlite-content-provider/robospice-ormlite-content-provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/robospice-retrofit/robospice-retrofit.iml" filepath="$PROJECT_DIR$/robospice-retrofit/robospice-retrofit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/robospice-spring-android/robospice-spring-android.iml" filepath="$PROJECT_DIR$/robospice-spring-android/robospice-spring-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/robospice-ui-spicelist/robospice-ui-spicelist.iml" filepath="$PROJECT_DIR$/robospice-ui-spicelist/robospice-ui-spicelist.iml" />
+    </modules>
+  </component>
+</project>
+

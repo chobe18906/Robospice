@@ -1,0 +1,1 @@
+include ':robospice-core', ':robospice-cache', ':robospice-google-http-client', ':robospice-okhttp', ':robospice-ormlite-content-provider', ':robospice-ormlite', ':robospice-retrofit', ':robospice-spring-android', ':robospice-ui-spicelist'
