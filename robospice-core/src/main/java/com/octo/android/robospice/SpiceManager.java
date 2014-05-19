@@ -16,6 +16,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.PriorityBlockingQueue;
+import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
@@ -111,7 +112,7 @@ public class SpiceManager implements Runnable {
     private volatile boolean isStopped = true;
 
     /** The queue of requests to be sent to the service. */
-    protected final BlockingQueue<CachedSpiceRequest<?>> requestQueue = new PriorityBlockingQueue<CachedSpiceRequest<?>>();
+    protected final BlockingQueue<CachedSpiceRequest<?>> requestQueue;
 
     /**
      * The list of all requests that have not yet been passed to the service.
@@ -177,7 +178,22 @@ public class SpiceManager implements Runnable {
      *            the service class to bind to.
      */
     public SpiceManager(final Class<? extends SpiceService> spiceServiceClass) {
+        this(spiceServiceClass, true);
+    }
+
+    /**
+     * Creates a {@link SpiceManager}. Typically this occurs in the construction
+     * of an Activity or Fragment. This method will check if the service to bind
+     * to has been properly declared in AndroidManifest.
+     * @param spiceServiceClass
+     *            the service class to bind to.
+     * @param async Use asynchronous queue
+     */
+    public SpiceManager(final Class<? extends SpiceService> spiceServiceClass, boolean async) {
         this.spiceServiceClass = spiceServiceClass;
+        requestQueue = async
+                ? new PriorityBlockingQueue<CachedSpiceRequest<?>>()
+                : new SynchronousQueue<CachedSpiceRequest<?>>();
     }
 
     /**
