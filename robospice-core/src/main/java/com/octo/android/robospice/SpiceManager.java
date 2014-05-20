@@ -10,13 +10,13 @@ import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.PriorityBlockingQueue;
-import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
@@ -193,7 +193,7 @@ public class SpiceManager implements Runnable {
         this.spiceServiceClass = spiceServiceClass;
         requestQueue = async
                 ? new PriorityBlockingQueue<CachedSpiceRequest<?>>()
-                : new SynchronousQueue<CachedSpiceRequest<?>>();
+                : new ArrayBlockingQueue<CachedSpiceRequest<?>>(1);
     }
 
     /**
@@ -497,7 +497,11 @@ public class SpiceManager implements Runnable {
     public <T> void execute(final CachedSpiceRequest<T> cachedSpiceRequest, final RequestListener<T> requestListener) {
         addRequestListenerToListOfRequestListeners(cachedSpiceRequest, requestListener);
         System.out.println("adding request to request queue");
-        this.requestQueue.add(cachedSpiceRequest);
+        try {
+            this.requestQueue.put(cachedSpiceRequest);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
